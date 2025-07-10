@@ -2,8 +2,8 @@ package details
 
 import "encoding/json"
 
-type niobeMinimalClientDataWrapper struct {
-	NiobeMinimalClientData [][]json.RawMessage `json:"niobeMinimalClientData"`
+type niobeClientDataWrapper struct {
+	NiobeClientData [][]json.RawMessage `json:"niobeClientData"`
 }
 type PriceDependencyInput struct {
 	ProducID    string
