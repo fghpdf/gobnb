@@ -42,12 +42,12 @@ func parseBodyDetails(body []byte) (metadataData, string, string, error) {
 	apiKey := regxApiKey.FindString(string(body))
 	apiKey = strings.ReplaceAll(apiKey, `"key":"`, "")
 	apiKey = strings.ReplaceAll(apiKey, `"`, "")
-	var data niobeMinimalClientDataWrapper
+	var data niobeClientDataWrapper
 	if err := json.Unmarshal([]byte(htmlData), &data); err != nil {
 		return metadataData{}, "", "", trace.NewOrAdd(3, "main", "parseBodyDetails", err, "")
 	}
 	var datailsData metadataData
-	if err := json.Unmarshal(data.NiobeMinimalClientData[0][1], &datailsData); err != nil {
+	if err := json.Unmarshal(data.NiobeClientData[0][1], &datailsData); err != nil {
 		return metadataData{}, "", "", trace.NewOrAdd(4, "main", "parseBodyDetails", err, "")
 	}
 	return datailsData, language, apiKey, nil
